@@ -45,17 +45,17 @@
     state: directory
     mode: '0755'
 
+# - name: Download Docker GPG key
+#   get_url:
+#     url: "{{ docker_gpg_repo_url }}/gpg"
+#     dest: "{{ temp_path }}"
+
+
 - name: Download Docker GPG key
-  get_url:
-    url: "{{ docker_gpg_repo_url }}/gpg"
-    dest: "{{ temp_path }}"
-
-
-- name: Import Docker GPG key
-  command: sudo gpg --dearmor -o {{ docker_repo_path }} {{ temp_path }}
+  shell: curl -fsSL "{{ docker_gpg_repo_url }}/gpg" | sudo gpg --dearmor -o "{{ docker_repo_path }}"
 
 - name: Set permissions for Docker GPG key
-  command: sudo chmod a+r {{ docker_repo_path }}
+  shell: sudo chmod a+r "{{ docker_repo_path }}"
 
 
 - name: Add Docker repository information
