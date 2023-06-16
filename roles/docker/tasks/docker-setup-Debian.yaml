@@ -5,6 +5,29 @@
     update_cache: yes
     cache_valid_time: 3600
 
+##### Debugging ################
+
+- name: Print docker repo path
+  debug:
+    var: docker_repo_path
+
+- name: Print docker url variable
+  debug:
+    var: docker_gpg_repo_url
+
+- name: Print ansible_architecture variable
+  debug:
+    var: ansible_architecture
+
+- name: Print ansible_distribution_release
+  debug:
+    var: ansible_distribution_release
+
+- name: Print ansible_user
+  debug:
+    var: ansible_user
+
+
 - name: Remove Docker if already available
   apt:
     name: ['docker.io', 'docker-doc', 'docker-compose', 'containerd', 'runc', 'podman-docker']
@@ -32,16 +55,13 @@
     path: "{{ docker_repo_path }}"
     mode: '0644'
 
-- name: Get OS codename
-  command: . /etc/os-release && echo "$VERSION_CODENAME"
-  register: codename
-
-- name: Add Docker repository to sources.list.d
+- name: Add Docker repository information to sources list
   lineinfile:
-    dest: /etc/apt/sources.list.d/docker.list
-    line: 'deb [arch="{{ ansible_architecture }}" signed-by={{ docker_repo_path }}] {{ docker_gpg_repo_url }}/gpg {{ codename.stdout }} stable'
+    path: /etc/apt/sources.list.d/docker.list
+    line: 'deb [arch={{ ansible_architecture }} signed-by={{ docker_repo_path }}] {{ docker_gpg_repo_url }} {{ ansible_distribution_release }} stable'
     state: present
-  when: codename.stdout is defined
+    create: yes
+    insertafter: EOF
 
 - name: Update cache
   apt:
