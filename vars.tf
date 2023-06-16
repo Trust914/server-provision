@@ -1,0 +1,60 @@
+variable "region" {
+  default = "us-east-1"
+}
+
+variable "zones" {
+  default = ["us-east-1a", "us-east-1b", "us-east-1c"]
+}
+
+variable "vpc_ip_cidr" {
+  default = "172.10.0.0/16"
+}
+
+variable "vpc_pub_subnets" {
+
+  default = ["172.10.1.0/24", "172.10.2.0/24", "172.10.3.0/24"]
+}
+
+variable "vpc_priv_subnets" {
+
+  default = ["172.10.5.0/24", "172.10.6.0/24", "172.10.7.0/24"]
+}
+
+variable "allow-ports" {
+  default = {
+    "ssh"  = 22,
+    "http" = 80
+  }
+}
+
+variable "amis" {
+  type = map(any)
+  default = {
+    us-east-1 = "ami-0715c1897453cabd1"
+    us-east-2 = "ami-01107263728f3bef4"
+  }
+
+}
+
+variable "key_name" {
+  default = "dovkey"
+}
+
+
+variable "user" {
+  default = "ec2-user"
+}
+
+variable "bucket_folders" {
+
+  type    = set(string)
+  default = ["tf_states"]
+}
+
+variable "bucket_name" {
+  default = "trust-terra-state"
+}
+
+variable "my-ip" {
+  default = "99.252.241.12/32"
+}

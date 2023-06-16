@@ -1,0 +1,62 @@
+---
+
+- name: Update cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Remove Docker if already available
+  apt:
+    name: ['docker.io', 'docker-doc', 'docker-compose', 'containerd', 'runc', 'podman-docker']
+    state: absent
+ 
+
+- name: Install apt utils
+  apt:
+    name: ['gnupg', 'curl', 'ca-certificates']
+    state: present
+
+- name: Create /etc/apt/keyrings directory
+  file:
+    path: "{{ docker_repo_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Download Docker GPG key
+  get_url:
+    url: "{{ docker_gpg_repo_url }}/gpg"
+    dest: "{{ docker_repo_path }}"
+
+- name: Set permissions for Docker GPG key
+  file:
+    path: "{{ docker_repo_path }}"
+    mode: '0644'
+
+- name: Get OS codename
+  command: . /etc/os-release && echo "$VERSION_CODENAME"
+  register: codename
+
+- name: Add Docker repository to sources.list.d
+  lineinfile:
+    dest: /etc/apt/sources.list.d/docker.list
+    line: 'deb [arch="{{ ansible_architecture }}" signed-by={{ docker_repo_path }}] {{ docker_gpg_repo_url }}/gpg {{ codename.stdout }} stable'
+    state: present
+  when: codename.stdout is defined
+
+- name: Update cache
+  apt:
+    update_cache: yes
+
+- name: Instal Docker and Plugins
+  apt:
+    name: ['docker-ce', 'docker-ce-cli', 'docker-buildx-plugin', 'docker-compose-plugin', 'containerd.io']
+    state: present
+  
+- name: Add current user to the docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+  notify: restart docker
+
+

@@ -1,0 +1,45 @@
+---
+- name: Update all packages
+  yum:
+    name: '*'
+    state: latest
+
+- name: Remove old versions of docker
+  yum:
+    name: ['runc', 'podman', 'docker-engine', 'docker-latest-logrotate', 'docker-latest', 'docker-common', 'docker-client-latest', 'docker']
+    state: absent
+
+- name: Install the yum-utils package
+  yum:
+    name: yum-utils
+    state: present
+
+
+- name: Add Docker repo
+  get_url:
+    url: "{{ docker_gpg_repo_url }}/{{ repo_name}}"
+    dest: "{{ docker_repo_path }}"
+
+- name: Install Docker Engine
+  yum:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'docker-buildx-plugin', 'docker-compose-plugin']
+    state: present
+
+- name: Start Docker Service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Add current user to the docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+  notify: restart docker
+
+
+
+
+
+
