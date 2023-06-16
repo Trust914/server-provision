@@ -5,29 +5,6 @@
     update_cache: yes
     cache_valid_time: 3600
 
-##### Debugging ################
-
-- name: Print docker repo path
-  debug:
-    var: docker_repo_path
-
-- name: Print docker url variable
-  debug:
-    var: docker_gpg_repo_url
-
-- name: Print ansible_architecture variable
-  debug:
-    var: ansible_architecture
-
-- name: Print ansible_distribution_release
-  debug:
-    var: ansible_distribution_release
-
-- name: Print ansible_user
-  debug:
-    var: ansible_user
-
-
 - name: Remove Docker if already available
   apt:
     name: ['docker.io', 'docker-doc', 'docker-compose', 'containerd', 'runc', 'podman-docker']
