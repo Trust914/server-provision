@@ -1,2 +1,4 @@
 ---
 # defaults file for jenkins-setup
+
+docker_compose_path: "../../compose_files"
