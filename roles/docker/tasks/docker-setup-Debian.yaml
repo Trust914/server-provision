@@ -53,15 +53,15 @@
 - name: Set permissions for Docker GPG key
   file:
     path: "{{ docker_repo_path }}"
-    mode: '0644'
+    mode: '0444'
 
-- name: Add Docker repository information to sources list
-  lineinfile:
-    path: /etc/apt/sources.list.d/docker.list
-    line: 'deb [arch={{ ansible_architecture }} signed-by={{ docker_repo_path }}] {{ docker_gpg_repo_url }} {{ ansible_distribution_release }} stable'
-    state: present
-    create: yes
-    insertafter: EOF
+
+- name: Add Docker repository information
+  shell: |
+    echo "deb [arch=$(dpkg --print-architecture) signed-by={{ docker_repo_path }}] {{ docker_gpg_repo_url }} \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
 
 - name: Update cache
   apt:
