@@ -6,4 +6,4 @@
   become_method: sudo       # Set become method
   remote_user: root         # Update username for remote server
   roles:
-    - jenkins
+    - docker
