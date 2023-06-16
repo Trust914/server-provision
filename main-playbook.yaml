@@ -1,6 +1,6 @@
 ---
 
-- name: Provision Jenkins server
+- name: Set up docker engine
   hosts: webservers
   become: yes               # If to escalate privilege
   become_method: sudo       # Set become method
