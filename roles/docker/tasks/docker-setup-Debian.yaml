@@ -48,12 +48,14 @@
 - name: Download Docker GPG key
   get_url:
     url: "{{ docker_gpg_repo_url }}/gpg"
-    dest: "{{ docker_repo_path }}"
+    dest: "{{ temp_path }}"
+
+
+- name: Import Docker GPG key
+  command: sudo gpg --dearmor -o {{ docker_repo_path }} {{ temp_path }}
 
 - name: Set permissions for Docker GPG key
-  file:
-    path: "{{ docker_repo_path }}"
-    mode: '0444'
+  command: sudo chmod a+r {{ docker_repo_path }}
 
 
 - name: Add Docker repository information
