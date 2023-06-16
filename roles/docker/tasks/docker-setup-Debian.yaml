@@ -45,11 +45,6 @@
     state: directory
     mode: '0755'
 
-# - name: Download Docker GPG key
-#   get_url:
-#     url: "{{ docker_gpg_repo_url }}/gpg"
-#     dest: "{{ temp_path }}"
-
 
 - name: Download Docker GPG key
   shell: curl -fsSL "{{ docker_gpg_repo_url }}/gpg" | sudo gpg --dearmor -o "{{ docker_repo_path }}"
