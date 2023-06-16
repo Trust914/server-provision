@@ -1,3 +1,4 @@
 ---
 docker_repo_dir: "/etc/apt/keyrings/"
 docker_repo_path: "/etc/apt/keyrings/docker.gpg"
+temp_path: "/tmp/docker.gpg"
