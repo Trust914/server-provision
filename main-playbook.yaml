@@ -7,3 +7,4 @@
   remote_user: root         # Update username for remote server
   roles:
     - docker
+    - jenkins-setup
