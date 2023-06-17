@@ -6,6 +6,8 @@ web02 ansible_host=192.168.18.3
 web01
 web02
 
+[jenkinsservers]
+web01
 
 [webservers:vars]
 
