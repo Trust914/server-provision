@@ -4,13 +4,12 @@
 - name: copy Docker Compose files
   copy:
     src: "{{ docker_compose_path }}/{{ item }}"
-    dest: "/home/{{ ansible_user }}/compose_files/{{ item }}"
+    dest: "{{ docker_compose_dest }}/{{ item }}"
   loop:
   - jenkins-compose.yaml
 
 
 - name: deploy Docker Compose stack
-  docker_compose:
-    project_src: /home/{{ ansible_user }}/compose_files/
-    files:
-    - jenkins-compose.yaml
+  shell:
+    cmd: "docker compose -f jenkins-compose.yml -f up -d"
+    chdir: "{{ docker_compose_dest }}"
