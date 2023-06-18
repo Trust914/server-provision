@@ -1,6 +1,12 @@
 ---
 # tasks file for jenkins-setup
 
+- name: Create docker compose directory
+  file:
+    path: "{{ docker_compose_path }}"
+    state: directory
+    mode: '0755'
+
 - name: copy Docker Compose files
   copy:
     src: "{{ docker_compose_path }}/{{ item }}"
