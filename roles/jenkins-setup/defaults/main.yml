@@ -2,3 +2,4 @@
 # defaults file for jenkins-setup
 
 docker_compose_path: "../../compose_files"
+docker_compose_dest: "/home/{{ ansible_user }}/compose_files/"
