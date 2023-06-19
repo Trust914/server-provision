@@ -8,11 +8,9 @@
     mode: '0755'
 
 - name: copy Docker Compose files
-  copy:
-    src: "{{ docker_compose_path }}/{{ item }}"
-    dest: "{{ docker_compose_dest }}/{{ item }}"
-  loop:
-  - jenkins-compose.yaml
+  template:
+    src: jenkins-compose.yaml.j2
+    dest: "{{ docker_compose_dest }}/jenkins-compose.yaml"
 
 
 - name: deploy Docker Compose stack
@@ -21,7 +19,7 @@
     chdir: "{{ docker_compose_dest }}"
 
 - name: Read admin passkey
-  shell: cat "{{ jenkins_initial_pass_path }}"
+  shell: cat "{{ jenkins_volume_path }}/secrets/initialAdminPassword"
   register: jenkins_initial_password
 
 - name: Display jenkins initial password contents
