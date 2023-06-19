@@ -17,5 +17,5 @@
 
 - name: deploy Docker Compose stack
   shell:
-    cmd: "docker compose -f jenkins-compose.yml -f up -d"
+    cmd: "docker compose -f jenkins-compose.yml up -d"
     chdir: "{{ docker_compose_dest }}"
