@@ -19,3 +19,11 @@
   shell:
     cmd: "docker compose -f jenkins-compose.yml up -d"
     chdir: "{{ docker_compose_dest }}"
+
+- name: Read admin passkey
+  shell: cat "{{ jenkins_initial_pass_path }}"
+  register: jenkins_initial_password
+
+- name: Display jenkins initial password contents
+  debug:
+    var: jenkins_initial_password.stdout_lin
