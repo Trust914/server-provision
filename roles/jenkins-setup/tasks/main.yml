@@ -19,7 +19,7 @@
     chdir: "{{ docker_compose_dest }}"
 
 - name: Read admin passkey
-  shell: sudo cat "{{ jenkins_volume_path }}/secrets/initialAdminPassword"
+  shell: cat "{{ jenkins_volume_path }}/secrets/initialAdminPassword"
   register: jenkins_initial_password
 
 - name: Display jenkins initial password contents
