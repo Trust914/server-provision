@@ -3,3 +3,4 @@
 
 docker_compose_path: "../../compose_files"
 docker_compose_dest: "./compose_files/"
+jenkins_initial_pass_path: "/var/jenkins_home/secrets/initialAdminPassword"
