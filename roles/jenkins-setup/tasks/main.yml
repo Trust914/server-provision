@@ -17,7 +17,7 @@
 
 - name: deploy Docker Compose stack
   shell:
-    cmd: "docker compose -f jenkins-compose.yml up -d"
+    cmd: "docker compose -f jenkins-compose.yaml up -d"
     chdir: "{{ docker_compose_dest }}"
 
 - name: Read admin passkey
