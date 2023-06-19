@@ -15,13 +15,12 @@
 
 - name: deploy Docker Compose stack
   shell:
-    cmd: "docker compose -f jenkins-compose.yaml up -d"
-    chdir: "{{ docker_compose_dest }}"
+    cmd: "docker compose -f {{ docker_compose_dest }}/jenkins-compose.yaml up -d"
 
 - name: Read admin passkey
-  shell: sudo cat "{{ jenkins_volume_path }}/secrets/initialAdminPassword"
+  shell: "sudo cat {{ jenkins_volume_path }}/secrets/initialAdminPassword"
   register: jenkins_initial_password
 
 - name: Display jenkins initial password contents
   debug:
-    var: jenkins_initial_password.stdout_lin
+    var: jenkins_initial_password
