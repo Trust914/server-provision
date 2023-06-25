@@ -17,6 +17,14 @@
   shell:
     cmd: "docker compose -f {{ docker_compose_dest }}/jenkins-compose.yaml up -d"
 
+
+- name: Wait for Jenkins container to start
+  wait_for:
+    host: "{{ inventory_hostname }}"
+    port: 8080
+    delay: 5
+    timeout: 120
+
 - name: Read admin passkey
   shell: "sudo cat {{ jenkins_volume_path }}/secrets/initialAdminPassword"
   register: jenkins_initial_password
