@@ -3,4 +3,4 @@
 
 # docker_compose_path: "../../compose_files"
 docker_compose_dest: "/tmp/compose_files/"
-jenkins_volume_path: "/home/{{ ansible_user }}/jenkins_compose/jenkins_configuration"
+jenkins_volume_path: "/home/{{ ansible_user }}/jenkins_configuration"

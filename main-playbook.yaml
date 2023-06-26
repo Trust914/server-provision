@@ -1,20 +1,20 @@
 ---
 
-############ Play 1 #############
+      ####### Play 1 #########
 - name: Set up docker engine
-  hosts: webservers
-  become: yes               # If to escalate privilege
-  become_method: sudo       # Set become method
-  remote_user: root         # Update username for remote server
-  roles:
+ hosts: webservers
+ become: yes                If to escalate privilege
+ become_method: sudo        Set become method
+ remote_user: root          Update username for remote server
+ roles:
     - docker
   
 
-############ Play 2 #############
+      ########## Play 2 ##########
 - name: Set up jenkins container
   hosts: jenkinsservers
   become: yes
   become_method: sudo
-  remote_user: root
+  become_user: root
   roles:
     - jenkins-setup
