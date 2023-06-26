@@ -11093,3 +11093,37 @@ Shared connection to 192.168.18.2 closed.
 }
 2023-06-25 23:37:56,727 p=5137 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
 2023-06-25 23:37:56,728 p=5137 u=vagrant n=ansible | web01                      : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-26 00:54:19,245 p=5574 u=vagrant n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: No JSON object could be decoded
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/home/vagrant/server-provision/main-playbook.yaml': line 5, column 2, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+- name: Set up docker engine
+ hosts: webservers
+ ^ here
+
+2023-06-26 00:55:06,156 p=5590 u=vagrant n=ansible | PLAY [Set up docker engine] **************************************************************************************************************************************************************************************
+2023-06-26 00:55:06,181 p=5590 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 00:55:07,490 p=5590 u=vagrant n=ansible | ok: [web01]
+2023-06-26 00:55:15,244 p=5590 u=vagrant n=ansible | ok: [web02]
+2023-06-26 00:55:15,259 p=5590 u=vagrant n=ansible | TASK [docker : Add the OS specific variables] ********************************************************************************************************************************************************************
+2023-06-26 00:55:15,290 p=5590 u=vagrant n=ansible | ok: [web01] => (item=/home/vagrant/server-provision/roles/docker/vars/RedHat.yaml)
+2023-06-26 00:55:15,311 p=5590 u=vagrant n=ansible | ok: [web02] => (item=/home/vagrant/server-provision/roles/docker/vars/Debian.yaml)
+2023-06-26 00:55:15,328 p=5590 u=vagrant n=ansible | TASK [docker : include_tasks] ************************************************************************************************************************************************************************************
+2023-06-26 00:55:15,437 p=5590 u=vagrant n=ansible | included: /home/vagrant/server-provision/roles/docker/tasks/docker-setup-RedHat.yaml for web01
+2023-06-26 00:55:15,450 p=5590 u=vagrant n=ansible | included: /home/vagrant/server-provision/roles/docker/tasks/docker-setup-Debian.yaml for web02
+2023-06-26 00:55:15,468 p=5590 u=vagrant n=ansible | TASK [docker : Update all packages] ******************************************************************************************************************************************************************************
+2023-06-26 00:55:25,580 p=5590 u=vagrant n=ansible | ok: [web01]
+2023-06-26 00:55:25,595 p=5590 u=vagrant n=ansible | TASK [Remove old versions of docker] *****************************************************************************************************************************************************************************
+2023-06-26 00:55:26,959 p=5590 u=vagrant n=ansible | fatal: [web01]: FAILED! => {"changed": false, "changes": {"removed": ["runc"]}, "msg": "You need to be root to perform this command.\n", "rc": 1, "results": ["podman is not installed", "docker-engine is not installed", "docker-latest-logrotate is not installed", "docker-latest is not installed", "docker-common is not installed", "docker-client-latest is not installed", "docker is not installed", "Loaded plugins: fastestmirror\n"]}
+2023-06-26 00:55:26,977 p=5590 u=vagrant n=ansible | TASK [docker : Update cache] *************************************************************************************************************************************************************************************
+2023-06-26 00:55:27,983 p=5590 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation"}
+2023-06-26 00:55:27,985 p=5590 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 00:55:27,985 p=5590 u=vagrant n=ansible | web01                      : ok=4    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 00:55:27,986 p=5590 u=vagrant n=ansible | web02                      : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
