@@ -11127,3 +11127,125 @@ The offending line appears to be:
 2023-06-26 00:55:27,985 p=5590 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
 2023-06-26 00:55:27,985 p=5590 u=vagrant n=ansible | web01                      : ok=4    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 2023-06-26 00:55:27,986 p=5590 u=vagrant n=ansible | web02                      : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 01:00:16,484 p=5686 u=vagrant n=ansible | PLAY [Set up docker engine] **************************************************************************************************************************************************************************************
+2023-06-26 01:00:16,511 p=5686 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 01:00:16,525 p=5686 u=vagrant n=ansible | fatal: [web01]: FAILED! => {"msg": "Invalid become method specified, could not find matching plugin: 'sudo        Set become method'. Use `ansible-doc -t become -l` to list available plugins."}
+2023-06-26 01:00:16,530 p=5686 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"msg": "Invalid become method specified, could not find matching plugin: 'sudo        Set become method'. Use `ansible-doc -t become -l` to list available plugins."}
+2023-06-26 01:00:16,531 p=5686 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 01:00:16,531 p=5686 u=vagrant n=ansible | web01                      : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 01:00:16,532 p=5686 u=vagrant n=ansible | web02                      : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 01:01:21,813 p=5712 u=vagrant n=ansible | PLAY [Set up docker engine] **************************************************************************************************************************************************************************************
+2023-06-26 01:01:21,828 p=5712 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 01:01:23,430 p=5712 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:01:23,444 p=5712 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:01:23,459 p=5712 u=vagrant n=ansible | TASK [docker : Add the OS specific variables] ********************************************************************************************************************************************************************
+2023-06-26 01:01:23,492 p=5712 u=vagrant n=ansible | ok: [web01] => (item=/home/vagrant/server-provision/roles/docker/vars/RedHat.yaml)
+2023-06-26 01:01:23,512 p=5712 u=vagrant n=ansible | ok: [web02] => (item=/home/vagrant/server-provision/roles/docker/vars/Debian.yaml)
+2023-06-26 01:01:23,525 p=5712 u=vagrant n=ansible | TASK [docker : include_tasks] ************************************************************************************************************************************************************************************
+2023-06-26 01:01:23,639 p=5712 u=vagrant n=ansible | included: /home/vagrant/server-provision/roles/docker/tasks/docker-setup-RedHat.yaml for web01
+2023-06-26 01:01:23,651 p=5712 u=vagrant n=ansible | included: /home/vagrant/server-provision/roles/docker/tasks/docker-setup-Debian.yaml for web02
+2023-06-26 01:01:23,668 p=5712 u=vagrant n=ansible | TASK [docker : Update all packages] ******************************************************************************************************************************************************************************
+2023-06-26 01:01:27,493 p=5712 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:01:27,510 p=5712 u=vagrant n=ansible | TASK [Remove old versions of docker] *****************************************************************************************************************************************************************************
+2023-06-26 01:01:30,513 p=5712 u=vagrant n=ansible | changed: [web01]
+2023-06-26 01:01:30,532 p=5712 u=vagrant n=ansible | TASK [docker : Install the yum-utils package] ********************************************************************************************************************************************************************
+2023-06-26 01:01:31,160 p=5712 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:01:31,177 p=5712 u=vagrant n=ansible | TASK [docker : Add Docker repo] **********************************************************************************************************************************************************************************
+2023-06-26 01:01:31,872 p=5712 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:01:31,887 p=5712 u=vagrant n=ansible | TASK [docker : Install Docker Engine] ****************************************************************************************************************************************************************************
+2023-06-26 01:01:53,143 p=5712 u=vagrant n=ansible | changed: [web01]
+2023-06-26 01:01:53,160 p=5712 u=vagrant n=ansible | TASK [docker : Start Docker Service] *****************************************************************************************************************************************************************************
+2023-06-26 01:01:54,490 p=5712 u=vagrant n=ansible | changed: [web01]
+2023-06-26 01:01:54,504 p=5712 u=vagrant n=ansible | TASK [Add current user to the docker group] **********************************************************************************************************************************************************************
+2023-06-26 01:01:55,074 p=5712 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:01:55,089 p=5712 u=vagrant n=ansible | TASK [docker : Update cache] *************************************************************************************************************************************************************************************
+2023-06-26 01:02:01,671 p=5712 u=vagrant n=ansible | changed: [web02]
+2023-06-26 01:02:01,686 p=5712 u=vagrant n=ansible | TASK [docker : Remove Docker if already available] ***************************************************************************************************************************************************************
+2023-06-26 01:02:02,551 p=5712 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:02:02,567 p=5712 u=vagrant n=ansible | TASK [docker : Install apt utils] ********************************************************************************************************************************************************************************
+2023-06-26 01:02:03,755 p=5712 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:02:03,771 p=5712 u=vagrant n=ansible | TASK [docker : Create /etc/apt/keyrings directory] ***************************************************************************************************************************************************************
+2023-06-26 01:02:04,212 p=5712 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:02:04,229 p=5712 u=vagrant n=ansible | TASK [docker : Download Docker GPG key] **************************************************************************************************************************************************************************
+2023-06-26 01:07:02,742 p=5863 u=vagrant n=ansible | PLAY [Set up docker engine] **************************************************************************************************************************************************************************************
+2023-06-26 01:07:02,755 p=5863 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 01:07:04,217 p=5863 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:07:04,259 p=5863 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:07:04,276 p=5863 u=vagrant n=ansible | TASK [docker : Add the OS specific variables] ********************************************************************************************************************************************************************
+2023-06-26 01:07:04,308 p=5863 u=vagrant n=ansible | ok: [web01] => (item=/home/vagrant/server-provision/roles/docker/vars/RedHat.yaml)
+2023-06-26 01:07:04,329 p=5863 u=vagrant n=ansible | ok: [web02] => (item=/home/vagrant/server-provision/roles/docker/vars/Debian.yaml)
+2023-06-26 01:07:04,344 p=5863 u=vagrant n=ansible | TASK [docker : include_tasks] ************************************************************************************************************************************************************************************
+2023-06-26 01:07:04,464 p=5863 u=vagrant n=ansible | included: /home/vagrant/server-provision/roles/docker/tasks/docker-setup-RedHat.yaml for web01
+2023-06-26 01:07:04,480 p=5863 u=vagrant n=ansible | included: /home/vagrant/server-provision/roles/docker/tasks/docker-setup-Debian.yaml for web02
+2023-06-26 01:07:04,497 p=5863 u=vagrant n=ansible | TASK [docker : Update all packages] ******************************************************************************************************************************************************************************
+2023-06-26 01:07:08,317 p=5863 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:07:08,333 p=5863 u=vagrant n=ansible | TASK [Remove old versions of docker] *****************************************************************************************************************************************************************************
+2023-06-26 01:07:11,296 p=5863 u=vagrant n=ansible | changed: [web01]
+2023-06-26 01:07:11,311 p=5863 u=vagrant n=ansible | TASK [docker : Install the yum-utils package] ********************************************************************************************************************************************************************
+2023-06-26 01:07:11,949 p=5863 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:07:11,963 p=5863 u=vagrant n=ansible | TASK [docker : Add Docker repo] **********************************************************************************************************************************************************************************
+2023-06-26 01:07:12,675 p=5863 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:07:12,692 p=5863 u=vagrant n=ansible | TASK [docker : Install Docker Engine] ****************************************************************************************************************************************************************************
+2023-06-26 01:07:36,641 p=5863 u=vagrant n=ansible | changed: [web01]
+2023-06-26 01:07:36,661 p=5863 u=vagrant n=ansible | TASK [docker : Start Docker Service] *****************************************************************************************************************************************************************************
+2023-06-26 01:07:38,310 p=5863 u=vagrant n=ansible | changed: [web01]
+2023-06-26 01:07:38,331 p=5863 u=vagrant n=ansible | TASK [Add current user to the docker group] **********************************************************************************************************************************************************************
+2023-06-26 01:07:39,060 p=5863 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:07:39,079 p=5863 u=vagrant n=ansible | TASK [docker : Update cache] *************************************************************************************************************************************************************************************
+2023-06-26 01:07:42,427 p=5863 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:07:42,447 p=5863 u=vagrant n=ansible | TASK [docker : Remove Docker if already available] ***************************************************************************************************************************************************************
+2023-06-26 01:07:43,407 p=5863 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:07:43,424 p=5863 u=vagrant n=ansible | TASK [docker : Install apt utils] ********************************************************************************************************************************************************************************
+2023-06-26 01:07:44,687 p=5863 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:07:44,705 p=5863 u=vagrant n=ansible | TASK [docker : Create /etc/apt/keyrings directory] ***************************************************************************************************************************************************************
+2023-06-26 01:07:45,149 p=5863 u=vagrant n=ansible | ok: [web02]
+2023-06-26 01:07:45,165 p=5863 u=vagrant n=ansible | TASK [docker : Download Docker GPG key] **************************************************************************************************************************************************************************
+2023-06-26 01:07:45,709 p=5863 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 01:07:45,709 p=5863 u=vagrant n=ansible | changed: [web02]
+2023-06-26 01:07:45,725 p=5863 u=vagrant n=ansible | TASK [docker : Set permissions for Docker GPG key] ***************************************************************************************************************************************************************
+2023-06-26 01:07:46,040 p=5863 u=vagrant n=ansible | [WARNING]: Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+
+2023-06-26 01:07:46,040 p=5863 u=vagrant n=ansible | changed: [web02]
+2023-06-26 01:07:46,060 p=5863 u=vagrant n=ansible | TASK [docker : Add Docker repository information] ****************************************************************************************************************************************************************
+2023-06-26 01:07:46,396 p=5863 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"changed": true, "cmd": "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \\\n$(. /etc/os-release && echo \"$VERSION_CODENAME\") stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null\n", "delta": "0:00:00.008388", "end": "2023-06-26 01:07:46.364639", "msg": "non-zero return code", "rc": 1, "start": "2023-06-26 01:07:46.356251", "stderr": "tee: /etc/apt/sources.list.d/docker.list: No such file or directory", "stderr_lines": ["tee: /etc/apt/sources.list.d/docker.list: No such file or directory"], "stdout": "", "stdout_lines": []}
+2023-06-26 01:07:46,404 p=5863 u=vagrant n=ansible | PLAY [Set up jenkins container] **********************************************************************************************************************************************************************************
+2023-06-26 01:07:46,424 p=5863 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 01:07:47,232 p=5863 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:07:47,248 p=5863 u=vagrant n=ansible | TASK [jenkins-setup : Create docker compose directory] ***********************************************************************************************************************************************************
+2023-06-26 01:07:47,666 p=5863 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:07:47,685 p=5863 u=vagrant n=ansible | TASK [jenkins-setup : copy Docker Compose files] *****************************************************************************************************************************************************************
+2023-06-26 01:07:48,592 p=5863 u=vagrant n=ansible | ok: [web01]
+2023-06-26 01:07:48,607 p=5863 u=vagrant n=ansible | TASK [jenkins-setup : deploy Docker Compose stack] ***************************************************************************************************************************************************************
+2023-06-26 01:07:49,777 p=5863 u=vagrant n=ansible | changed: [web01]
+2023-06-26 01:07:49,799 p=5863 u=vagrant n=ansible | TASK [jenkins-setup : Display current hostname] ******************************************************************************************************************************************************************
+2023-06-26 01:07:49,836 p=5863 u=vagrant n=ansible | ok: [web01] => {
+    "inventory_hostname": "web01"
+}
+2023-06-26 01:07:49,857 p=5863 u=vagrant n=ansible | TASK [jenkins-setup : Read admin passkey] ************************************************************************************************************************************************************************
+2023-06-26 01:07:50,505 p=5863 u=vagrant n=ansible | changed: [web01]
+2023-06-26 01:07:50,525 p=5863 u=vagrant n=ansible | TASK [jenkins-setup : Display jenkins initial password contents] *************************************************************************************************************************************************
+2023-06-26 01:07:50,564 p=5863 u=vagrant n=ansible | ok: [web01] => {
+    "jenkins_initial_password": {
+        "changed": true, 
+        "cmd": [
+            "cat", 
+            "/home/vagrant/jenkins_configuration/secrets/initialAdminPassword"
+        ], 
+        "delta": "0:00:00.004164", 
+        "end": "2023-06-26 01:07:48.898865", 
+        "failed": false, 
+        "rc": 0, 
+        "start": "2023-06-26 01:07:48.894701", 
+        "stderr": "", 
+        "stderr_lines": [], 
+        "stdout": "b783598f07ab487bb815bcfa3b27bf72", 
+        "stdout_lines": [
+            "b783598f07ab487bb815bcfa3b27bf72"
+        ]
+    }
+}
+2023-06-26 01:07:50,567 p=5863 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 01:07:50,567 p=5863 u=vagrant n=ansible | web01                      : ok=17   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-26 01:07:50,568 p=5863 u=vagrant n=ansible | web02                      : ok=9    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
