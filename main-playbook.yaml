@@ -4,8 +4,8 @@
 - name: Set up docker engine
   hosts: webservers
   become: yes                #If to escalate privilege
-  become_method: sudo        Set become method
-  remote_user: root          Update username for remote server
+  become_method: sudo        #Set become method
+  remote_user: root          #Update username for remote server
   roles:
     - docker
   
