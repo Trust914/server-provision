@@ -9,6 +9,9 @@ web02
 [jenkinsservers]
 web01
 
+[kopsmachine]
+web02
+
 [webservers:vars]
 
 ansible_user=vagrant 

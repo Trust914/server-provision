@@ -1,2 +1,61 @@
 ---
 # tasks file for kube-setup
+
+- name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
+  community.crypto.openssh_keypair:
+    path: "{{ ssh_path }}"
+  
+- name: Get current version of kubectl
+  command: curl -L -s "{{ kubectl_base_url }}/stable.txt"
+  register: kubectl_version_output
+
+- name: Set kubectl version
+  set_fact:
+    kubectl_version: "{{ kubectl_version_output.stdout }}"
+
+- name: Download AWS CLI zip package
+  get_url:
+    url: "{{ aws_url }}"
+    dest: "{{ aws_zip_dest }}"
+
+- name: Extract AWS CLI zip package
+  unarchive:
+    src: "{{ aws_zip_dest }}"
+    dest: "{{ aws_tmp_dir }}"
+    remote_src: yes
+
+- name: Install AWS CLI
+  command: "{{ aws_tmp_dir }}/aws/install"
+
+- name: Set AWS CLI configuration
+  awscli_config:
+    profile: "{{ aws_profile_name }}"
+    aws_access_key: "{{ aws_access_key_id }}" ## from ansible vault
+    aws_secret_key: "{{ aws_secret_key }}" ## from ansible vault
+    region: "{{ aws_region }}"
+    output: "{{ aws_format }}"
+
+
+- name: Download kubectl
+  get_url:
+    url: "{{ kubectl_base_url }}/{{ kubectl_version }}/{{ kubectl_url_bin_base }}/kubectl"
+    dest: "{{ kubectl_bin_dest }}"
+    mode: "0755"
+    owner: "root"
+    group: "root"
+
+- name: Get latest release JSON
+  uri:
+    url: "{{ kops_latest_release_url }}"
+    return_content: yes
+  register: release_response
+
+- name: Extract tag name
+  set_fact:
+    tag_name: "{{ release_response.content | from_json | json_query('tag_name') }}"
+
+- name: Download kops
+  get_url:
+    url: "{{ kops_download_url_base }}"
+    dest: "{{ kops_bin_des }}"
+    mode: "0755"
