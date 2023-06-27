@@ -14,5 +14,6 @@ awscli_users:
     awscli: 
         aws_region: "{{ aws_config_region }}"
         aws_output_format: "{{ aws_config_format }}" # format can be 'text','table' and 'json'
-        aws_access_key_id: "{{ aws_access_key_id}}"
+        aws_access_key: "{{ aws_access_key_id}}"
         aws_secret_access_key: "{{ aws_secret_key }}"
+        

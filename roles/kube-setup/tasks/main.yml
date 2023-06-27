@@ -1,7 +1,10 @@
 ---
 # tasks file for kube-setup
 
-- name: Set up the kubernetes control machine
+- name: Include the vault password file
+  include_vars:
+    - awscli_users.yaml
+    - aws_secrets.yaml
 
 - include_tasks: set-up-awscli.yaml
 
