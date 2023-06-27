@@ -11249,3 +11249,361 @@ The offending line appears to be:
 2023-06-26 01:07:50,567 p=5863 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
 2023-06-26 01:07:50,567 p=5863 u=vagrant n=ansible | web01                      : ok=17   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 2023-06-26 01:07:50,568 p=5863 u=vagrant n=ansible | web02                      : ok=9    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 20:11:57,594 p=23643 u=vagrant n=ansible | ERROR! couldn't resolve module/action 'community.crypto.openssh_keypair'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/home/vagrant/server-provision/roles/kube-setup/tasks/main.yml': line 4, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
+  ^ here
+
+2023-06-26 20:13:34,781 p=23683 u=vagrant n=ansible | ERROR! couldn't resolve module/action 'awscli_config'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/home/vagrant/server-provision/roles/kube-setup/tasks/main.yml': line 30, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Set AWS CLI configuration
+  ^ here
+
+2023-06-26 20:14:20,500 p=23691 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 20:14:20,538 p=23691 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 20:14:22,206 p=23691 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:14:22,221 p=23691 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 20:14:22,634 p=23691 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"changed": false, "msg": "/root/.ssh/ is a directory. Please specify a path to a file."}
+2023-06-26 20:14:22,635 p=23691 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 20:14:22,636 p=23691 u=vagrant n=ansible | web02                      : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 20:15:54,447 p=23740 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 20:15:54,461 p=23740 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 20:15:56,083 p=23740 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:15:56,099 p=23740 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 20:15:57,512 p=23740 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:15:57,530 p=23740 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-26 20:15:58,282 p=23740 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 20:15:58,282 p=23740 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:15:58,297 p=23740 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-26 20:15:58,320 p=23740 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:15:58,335 p=23740 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-26 20:16:01,860 p=23740 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:16:01,876 p=23740 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-26 20:16:02,241 p=23740 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"changed": false, "msg": "dest '/tmp/aws_dir' must be an existing dir"}
+2023-06-26 20:16:02,242 p=23740 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 20:16:02,243 p=23740 u=vagrant n=ansible | web02                      : ok=5    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 20:21:36,843 p=23823 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 20:21:36,858 p=23823 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 20:21:38,506 p=23823 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:21:38,521 p=23823 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 20:21:38,940 p=23823 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:21:38,956 p=23823 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-26 20:21:39,696 p=23823 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 20:21:39,697 p=23823 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:21:39,712 p=23823 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-26 20:21:39,737 p=23823 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:21:39,753 p=23823 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-26 20:21:40,426 p=23823 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:21:40,440 p=23823 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-26 20:21:41,404 p=23823 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"changed": false, "msg": "Failed to find handler for \"./awscliv2.zip\". Make sure the required command to extract the file is installed. Command \"unzip\" not found. Command \"/bin/tar\" could not handle archive."}
+2023-06-26 20:21:41,405 p=23823 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 20:21:41,406 p=23823 u=vagrant n=ansible | web02                      : ok=5    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 20:29:58,677 p=23897 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 20:29:58,691 p=23897 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 20:30:00,589 p=23897 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:30:00,608 p=23897 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 20:30:01,045 p=23897 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:30:01,061 p=23897 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-26 20:30:01,841 p=23897 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 20:30:01,841 p=23897 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:30:01,865 p=23897 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-26 20:30:01,896 p=23897 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:30:01,915 p=23897 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-26 20:30:05,416 p=23897 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:30:05,435 p=23897 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-26 20:30:08,701 p=23897 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:30:08,716 p=23897 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-26 20:30:10,617 p=23897 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:30:10,633 p=23897 u=vagrant n=ansible | TASK [kube-setup : Download kubectl] *****************************************************************************************************************************************************************************
+2023-06-26 20:30:14,064 p=23897 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:30:14,080 p=23897 u=vagrant n=ansible | TASK [kube-setup : Get latest release JSON] **********************************************************************************************************************************************************************
+2023-06-26 20:30:15,025 p=23897 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:30:15,047 p=23897 u=vagrant n=ansible | TASK [kube-setup : Extract tag name] *****************************************************************************************************************************************************************************
+2023-06-26 20:30:15,072 p=23897 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"msg": "You need to install \"jmespath\" prior to running json_query filter"}
+2023-06-26 20:30:15,074 p=23897 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 20:30:15,075 p=23897 u=vagrant n=ansible | web02                      : ok=9    changed=5    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 20:36:33,214 p=24111 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 20:36:33,231 p=24111 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 20:36:34,947 p=24111 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:36:34,963 p=24111 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 20:36:35,411 p=24111 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:36:35,427 p=24111 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-26 20:36:36,245 p=24111 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 20:36:36,245 p=24111 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:36:36,261 p=24111 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-26 20:36:36,285 p=24111 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:36:36,301 p=24111 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-26 20:36:37,022 p=24111 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:36:37,038 p=24111 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-26 20:36:41,023 p=24111 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:36:41,039 p=24111 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-26 20:36:42,219 p=24111 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"changed": true, "cmd": ["/tmp/aws/install"], "delta": "0:00:00.883889", "end": "2023-06-26 20:36:42.186389", "msg": "non-zero return code", "rc": 1, "start": "2023-06-26 20:36:41.302500", "stderr": "Found preexisting AWS CLI installation: /usr/local/aws-cli/v2/current. Please rerun install script with --update flag.", "stderr_lines": ["Found preexisting AWS CLI installation: /usr/local/aws-cli/v2/current. Please rerun install script with --update flag."], "stdout": "", "stdout_lines": []}
+2023-06-26 20:36:42,220 p=24111 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 20:36:42,221 p=24111 u=vagrant n=ansible | web02                      : ok=6    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 20:38:52,333 p=24212 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 20:38:52,347 p=24212 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 20:38:54,045 p=24212 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:38:54,061 p=24212 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 20:38:54,495 p=24212 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:38:54,510 p=24212 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-26 20:38:55,195 p=24212 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 20:38:55,196 p=24212 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:38:55,212 p=24212 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-26 20:38:55,239 p=24212 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:38:55,256 p=24212 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-26 20:38:56,022 p=24212 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:38:56,037 p=24212 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-26 20:38:58,687 p=24212 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:38:58,726 p=24212 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-26 20:39:00,259 p=24212 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:39:00,276 p=24212 u=vagrant n=ansible | TASK [kube-setup : Download kubectl] *****************************************************************************************************************************************************************************
+2023-06-26 20:39:03,469 p=24212 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:39:03,485 p=24212 u=vagrant n=ansible | TASK [kube-setup : Get latest release JSON] **********************************************************************************************************************************************************************
+2023-06-26 20:39:04,502 p=24212 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:39:04,523 p=24212 u=vagrant n=ansible | TASK [kube-setup : Extract tag name] *****************************************************************************************************************************************************************************
+2023-06-26 20:39:04,551 p=24212 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"msg": "You need to install \"jmespath\" prior to running json_query filter"}
+2023-06-26 20:39:04,553 p=24212 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 20:39:04,553 p=24212 u=vagrant n=ansible | web02                      : ok=9    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 20:42:56,145 p=24989 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 20:42:56,164 p=24989 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 20:42:58,013 p=24989 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:42:58,030 p=24989 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 20:42:58,511 p=24989 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:42:58,527 p=24989 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-26 20:42:59,278 p=24989 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 20:42:59,278 p=24989 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:42:59,295 p=24989 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-26 20:42:59,323 p=24989 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:42:59,340 p=24989 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-26 20:43:00,056 p=24989 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:43:00,072 p=24989 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-26 20:43:03,158 p=24989 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:43:03,177 p=24989 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-26 20:43:04,789 p=24989 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:43:04,807 p=24989 u=vagrant n=ansible | TASK [kube-setup : Download kubectl] *****************************************************************************************************************************************************************************
+2023-06-26 20:43:07,898 p=24989 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:43:07,914 p=24989 u=vagrant n=ansible | TASK [kube-setup : Get latest release JSON] **********************************************************************************************************************************************************************
+2023-06-26 20:43:08,848 p=24989 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:43:08,871 p=24989 u=vagrant n=ansible | TASK [kube-setup : Extract tag name] *****************************************************************************************************************************************************************************
+2023-06-26 20:43:08,904 p=24989 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:43:08,920 p=24989 u=vagrant n=ansible | TASK [kube-setup : Download kops] ********************************************************************************************************************************************************************************
+2023-06-26 20:43:09,817 p=24989 u=vagrant n=ansible | fatal: [web02]: FAILED! => {"changed": false, "dest": "/usr/local/bin/kops", "elapsed": 0, "msg": "Request failed", "response": "HTTP Error 404: Not Found", "status_code": 404, "url": "https://github.com/kubernetes/kops/releases/download"}
+2023-06-26 20:43:09,818 p=24989 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 20:43:09,819 p=24989 u=vagrant n=ansible | web02                      : ok=10   changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-26 20:48:27,931 p=25137 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 20:48:27,948 p=25137 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 20:48:29,834 p=25137 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:48:29,853 p=25137 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 20:48:30,314 p=25137 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:48:30,330 p=25137 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-26 20:48:33,018 p=25137 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:48:33,036 p=25137 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-26 20:48:34,689 p=25137 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:48:34,705 p=25137 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-26 20:48:35,310 p=25137 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 20:48:35,311 p=25137 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:48:35,327 p=25137 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-26 20:48:35,354 p=25137 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:48:35,369 p=25137 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-26 20:48:36,163 p=25137 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:48:36,178 p=25137 u=vagrant n=ansible | TASK [kube-setup : Download kubectl] *****************************************************************************************************************************************************************************
+2023-06-26 20:48:39,512 p=25137 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:48:39,528 p=25137 u=vagrant n=ansible | TASK [kube-setup : Get latest release JSON] **********************************************************************************************************************************************************************
+2023-06-26 20:48:40,534 p=25137 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:48:40,556 p=25137 u=vagrant n=ansible | TASK [kube-setup : Extract tag name] *****************************************************************************************************************************************************************************
+2023-06-26 20:48:40,590 p=25137 u=vagrant n=ansible | ok: [web02]
+2023-06-26 20:48:40,607 p=25137 u=vagrant n=ansible | TASK [kube-setup : Print tag_name] *******************************************************************************************************************************************************************************
+2023-06-26 20:48:40,636 p=25137 u=vagrant n=ansible | ok: [web02] => {
+    "kops_version": "v1.26.4"
+}
+2023-06-26 20:48:40,651 p=25137 u=vagrant n=ansible | TASK [kube-setup : Download kops] ********************************************************************************************************************************************************************************
+2023-06-26 20:48:52,005 p=25137 u=vagrant n=ansible | changed: [web02]
+2023-06-26 20:48:52,007 p=25137 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 20:48:52,008 p=25137 u=vagrant n=ansible | web02                      : ok=12   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-26 21:09:38,694 p=25246 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-26 21:09:38,712 p=25246 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-26 21:09:40,745 p=25246 u=vagrant n=ansible | ok: [web02]
+2023-06-26 21:09:40,761 p=25246 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-26 21:09:41,229 p=25246 u=vagrant n=ansible | ok: [web02]
+2023-06-26 21:09:41,247 p=25246 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-26 21:09:44,861 p=25246 u=vagrant n=ansible | ok: [web02]
+2023-06-26 21:09:44,881 p=25246 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-26 21:09:46,968 p=25246 u=vagrant n=ansible | changed: [web02]
+2023-06-26 21:09:46,990 p=25246 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-26 21:09:47,825 p=25246 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-26 21:09:47,826 p=25246 u=vagrant n=ansible | changed: [web02]
+2023-06-26 21:09:47,845 p=25246 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-26 21:09:47,877 p=25246 u=vagrant n=ansible | ok: [web02]
+2023-06-26 21:09:47,895 p=25246 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-26 21:09:49,538 p=25246 u=vagrant n=ansible | ok: [web02]
+2023-06-26 21:09:49,557 p=25246 u=vagrant n=ansible | TASK [kube-setup : Download kubectl] *****************************************************************************************************************************************************************************
+2023-06-26 21:09:52,885 p=25246 u=vagrant n=ansible | changed: [web02]
+2023-06-26 21:09:52,904 p=25246 u=vagrant n=ansible | TASK [kube-setup : Get latest release JSON] **********************************************************************************************************************************************************************
+2023-06-26 21:09:54,080 p=25246 u=vagrant n=ansible | ok: [web02]
+2023-06-26 21:09:54,104 p=25246 u=vagrant n=ansible | TASK [kube-setup : Extract tag name] *****************************************************************************************************************************************************************************
+2023-06-26 21:09:54,147 p=25246 u=vagrant n=ansible | ok: [web02]
+2023-06-26 21:09:54,164 p=25246 u=vagrant n=ansible | TASK [kube-setup : Print tag_name] *******************************************************************************************************************************************************************************
+2023-06-26 21:09:54,194 p=25246 u=vagrant n=ansible | ok: [web02] => {
+    "kops_version": "v1.26.4"
+}
+2023-06-26 21:09:54,212 p=25246 u=vagrant n=ansible | TASK [kube-setup : Download kops] ********************************************************************************************************************************************************************************
+2023-06-26 21:10:05,902 p=25246 u=vagrant n=ansible | changed: [web02]
+2023-06-26 21:10:05,919 p=25246 u=vagrant n=ansible | TASK [kube-setup : Make kops executable] *************************************************************************************************************************************************************************
+2023-06-26 21:10:06,387 p=25246 u=vagrant n=ansible | changed: [web02]
+2023-06-26 21:10:06,405 p=25246 u=vagrant n=ansible | TASK [kube-setup : Move kops binary to /usr/local/bin/] **********************************************************************************************************************************************************
+2023-06-26 21:10:06,804 p=25246 u=vagrant n=ansible | changed: [web02]
+2023-06-26 21:10:06,810 p=25246 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-26 21:10:06,811 p=25246 u=vagrant n=ansible | web02                      : ok=14   changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-26 21:13:21,906 p=25370 u=vagrant n=ansible | [WARNING]: Error in vault password prompt (default): EOFError (ctrl-d) on prompt for (default)
+
+2023-06-26 21:13:21,908 p=25370 u=vagrant n=ansible | ERROR! EOFError (ctrl-d) on prompt for (default)
+2023-06-27 15:50:32,069 p=26263 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-27 15:50:32,132 p=26263 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-27 15:50:36,362 p=26263 u=vagrant n=ansible | ok: [web02]
+2023-06-27 15:50:36,402 p=26263 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-27 15:50:37,450 p=26263 u=vagrant n=ansible | ok: [web02]
+2023-06-27 15:50:37,530 p=26263 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-27 15:50:45,355 p=26263 u=vagrant n=ansible | ok: [web02]
+2023-06-27 15:50:45,380 p=26263 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-27 15:50:48,889 p=26263 u=vagrant n=ansible | changed: [web02]
+2023-06-27 15:50:48,934 p=26263 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-27 15:50:50,108 p=26263 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-27 15:50:50,109 p=26263 u=vagrant n=ansible | changed: [web02]
+2023-06-27 15:50:50,151 p=26263 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-27 15:50:50,222 p=26263 u=vagrant n=ansible | ok: [web02]
+2023-06-27 15:50:50,264 p=26263 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-27 15:50:52,063 p=26263 u=vagrant n=ansible | ok: [web02]
+2023-06-27 15:50:52,106 p=26263 u=vagrant n=ansible | TASK [kube-setup : Download kubectl] *****************************************************************************************************************************************************************************
+2023-06-27 15:50:55,755 p=26263 u=vagrant n=ansible | changed: [web02]
+2023-06-27 15:50:55,809 p=26263 u=vagrant n=ansible | TASK [kube-setup : Get latest release JSON] **********************************************************************************************************************************************************************
+2023-06-27 15:50:57,825 p=26263 u=vagrant n=ansible | ok: [web02]
+2023-06-27 15:50:57,889 p=26263 u=vagrant n=ansible | TASK [kube-setup : Extract tag name] *****************************************************************************************************************************************************************************
+2023-06-27 15:50:57,969 p=26263 u=vagrant n=ansible | ok: [web02]
+2023-06-27 15:50:58,027 p=26263 u=vagrant n=ansible | TASK [kube-setup : Print tag_name] *******************************************************************************************************************************************************************************
+2023-06-27 15:50:58,095 p=26263 u=vagrant n=ansible | ok: [web02] => {
+    "kops_version": "v1.26.4"
+}
+2023-06-27 15:50:58,127 p=26263 u=vagrant n=ansible | TASK [kube-setup : Download kops] ********************************************************************************************************************************************************************************
+2023-06-27 15:51:08,044 p=26263 u=vagrant n=ansible | changed: [web02]
+2023-06-27 15:51:08,089 p=26263 u=vagrant n=ansible | TASK [kube-setup : Make kops executable] *************************************************************************************************************************************************************************
+2023-06-27 15:51:09,271 p=26263 u=vagrant n=ansible | changed: [web02]
+2023-06-27 15:51:09,310 p=26263 u=vagrant n=ansible | TASK [kube-setup : Move kops binary to /usr/local/bin/] **********************************************************************************************************************************************************
+2023-06-27 15:51:10,091 p=26263 u=vagrant n=ansible | changed: [web02]
+2023-06-27 15:51:10,097 p=26263 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-27 15:51:10,098 p=26263 u=vagrant n=ansible | web02                      : ok=14   changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-27 16:09:10,861 p=26416 u=vagrant n=ansible | ERROR! conflicting action statements: get_url, des
+
+The error appears to be in '/home/vagrant/server-provision/roles/kube-setup/tasks/main.yml': line 54, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Download kops binary
+  ^ here
+
+2023-06-27 16:09:40,128 p=26424 u=vagrant n=ansible | ERROR! conflicting action statements: dest, get_url
+
+The error appears to be in '/home/vagrant/server-provision/roles/kube-setup/tasks/main.yml': line 54, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Download kops binary
+  ^ here
+
+2023-06-27 16:10:35,404 p=26432 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-27 16:10:35,443 p=26432 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-27 16:10:39,526 p=26432 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:10:39,566 p=26432 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-27 16:10:40,627 p=26432 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:10:40,667 p=26432 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-27 16:10:48,768 p=26432 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:10:48,807 p=26432 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-27 16:10:52,760 p=26432 u=vagrant n=ansible | changed: [web02]
+2023-06-27 16:10:52,788 p=26432 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-27 16:10:53,936 p=26432 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-27 16:10:53,938 p=26432 u=vagrant n=ansible | changed: [web02]
+2023-06-27 16:10:53,982 p=26432 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-27 16:10:54,049 p=26432 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:10:54,088 p=26432 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-27 16:10:55,626 p=26432 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:10:55,666 p=26432 u=vagrant n=ansible | TASK [kube-setup : Download kubectl] *****************************************************************************************************************************************************************************
+2023-06-27 16:10:59,362 p=26432 u=vagrant n=ansible | changed: [web02]
+2023-06-27 16:10:59,403 p=26432 u=vagrant n=ansible | TASK [kube-setup : Get latest release JSON] **********************************************************************************************************************************************************************
+2023-06-27 16:11:01,414 p=26432 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:11:01,464 p=26432 u=vagrant n=ansible | TASK [kube-setup : Extract tag name] *****************************************************************************************************************************************************************************
+2023-06-27 16:11:01,538 p=26432 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:11:01,579 p=26432 u=vagrant n=ansible | TASK [kube-setup : Print tag_name] *******************************************************************************************************************************************************************************
+2023-06-27 16:11:01,646 p=26432 u=vagrant n=ansible | ok: [web02] => {
+    "kops_version": "v1.26.4"
+}
+2023-06-27 16:11:01,679 p=26432 u=vagrant n=ansible | TASK [kube-setup : Download kops binary] *************************************************************************************************************************************************************************
+2023-06-27 16:11:10,877 p=26432 u=vagrant n=ansible | changed: [web02]
+2023-06-27 16:11:10,882 p=26432 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-27 16:11:10,883 p=26432 u=vagrant n=ansible | web02                      : ok=12   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-27 16:21:08,961 p=26570 u=vagrant n=ansible | PLAY [Set up kops machine] ***************************************************************************************************************************************************************************************
+2023-06-27 16:21:09,000 p=26570 u=vagrant n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-06-27 16:21:14,259 p=26570 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:21:14,293 p=26570 u=vagrant n=ansible | TASK [kube-setup : Generate an OpenSSH keypair with the default values (4096 bits, rsa)] *************************************************************************************************************************
+2023-06-27 16:21:15,385 p=26570 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:21:15,421 p=26570 u=vagrant n=ansible | TASK [kube-setup : Extract AWS CLI zip package] ******************************************************************************************************************************************************************
+2023-06-27 16:21:22,397 p=26570 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:21:22,436 p=26570 u=vagrant n=ansible | TASK [kube-setup : Install AWS CLI] ******************************************************************************************************************************************************************************
+2023-06-27 16:21:26,424 p=26570 u=vagrant n=ansible | changed: [web02]
+2023-06-27 16:21:26,446 p=26570 u=vagrant n=ansible | TASK [kube-setup : Get current version of kubectl] ***************************************************************************************************************************************************************
+2023-06-27 16:21:27,544 p=26570 u=vagrant n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set
+'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-06-27 16:21:27,545 p=26570 u=vagrant n=ansible | changed: [web02]
+2023-06-27 16:21:27,583 p=26570 u=vagrant n=ansible | TASK [kube-setup : Set kubectl version] **************************************************************************************************************************************************************************
+2023-06-27 16:21:27,643 p=26570 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:21:27,683 p=26570 u=vagrant n=ansible | TASK [kube-setup : Download AWS CLI zip package] *****************************************************************************************************************************************************************
+2023-06-27 16:21:29,360 p=26570 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:21:29,389 p=26570 u=vagrant n=ansible | TASK [kube-setup : Download kubectl] *****************************************************************************************************************************************************************************
+2023-06-27 16:21:32,859 p=26570 u=vagrant n=ansible | changed: [web02]
+2023-06-27 16:21:32,899 p=26570 u=vagrant n=ansible | TASK [kube-setup : Get latest release JSON] **********************************************************************************************************************************************************************
+2023-06-27 16:21:34,885 p=26570 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:21:34,935 p=26570 u=vagrant n=ansible | TASK [kube-setup : Extract tag name] *****************************************************************************************************************************************************************************
+2023-06-27 16:21:35,017 p=26570 u=vagrant n=ansible | ok: [web02]
+2023-06-27 16:21:35,056 p=26570 u=vagrant n=ansible | TASK [kube-setup : Print tag_name] *******************************************************************************************************************************************************************************
+2023-06-27 16:21:35,125 p=26570 u=vagrant n=ansible | ok: [web02] => {
+    "kops_version": "v1.26.4"
+}
+2023-06-27 16:21:35,166 p=26570 u=vagrant n=ansible | TASK [kube-setup : Download kops binary] *************************************************************************************************************************************************************************
+2023-06-27 16:21:44,209 p=26570 u=vagrant n=ansible | changed: [web02]
+2023-06-27 16:21:44,214 p=26570 u=vagrant n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-06-27 16:21:44,215 p=26570 u=vagrant n=ansible | web02                      : ok=12   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
