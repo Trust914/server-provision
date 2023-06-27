@@ -9,7 +9,7 @@ kops_latest_release_url: "https://api.github.com/repos/kubernetes/kops/releases/
 kops_download_url_base: "https://github.com/kubernetes/kops/releases/download"
 kops_bin_des: "/usr/local/bin/kops"
 
-ssh_path: "~/.ssh/id_rsa"
+ssh_path: "/home/{{ ansible_user }}/.ssh/id_rsa"
 aws_url: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
 aws_zip_dest: "./awscliv2.zip"
 aws_bin_path: "/tmp"

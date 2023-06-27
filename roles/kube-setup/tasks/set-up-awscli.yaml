@@ -30,3 +30,13 @@
     mode: 0644
   when: item.get('state', 'present') == 'present'
   with_items: "{{ awscli_users }}"
+
+- name: Copy awscli credentials to remote server
+  template:  
+    src: aws_cli_credentials.j2
+    dest: "/home/{{ item.username }}/.aws/credentials" 
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+    mode: 0644
+  when: item.get('state', 'present') == 'present'
+  with_items: "{{ awscli_users }}"

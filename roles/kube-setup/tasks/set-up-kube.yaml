@@ -4,8 +4,6 @@
     path: "{{ ssh_path }}"
   
 
-
-
 - name: Get current version of kubectl
   command: curl -L -s "{{ kubectl_base_url }}/stable.txt"
   register: kubectl_version_output
