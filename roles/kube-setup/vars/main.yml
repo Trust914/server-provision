@@ -1,2 +1,18 @@
 ---
 # vars file for kube-setup
+
+awscli_users:
+  # - username: root
+  #   state: present
+  #   awscli: 
+  #       aws_region: "{{ aws_config_region }}"
+  #       aws_output_format: "{{ aws_config_format }}" # format can be 'text','table' and 'json'
+  #       aws_access_key_id: "{{ aws_access_key_id}}"
+  #       aws_secret_access_key: "{{ aws_secret_key }}"
+  - username: vagrant
+    state: present
+    awscli: 
+        aws_region: "{{ aws_config_region }}"
+        aws_output_format: "{{ aws_config_format }}" # format can be 'text','table' and 'json'
+        aws_access_key_id: "{{ aws_access_key_id}}"
+        aws_secret_access_key: "{{ aws_secret_key }}"

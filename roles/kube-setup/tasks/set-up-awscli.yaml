@@ -1,0 +1,32 @@
+---
+
+# task to install and configure aws cli
+
+- name: Extract AWS CLI zip package
+  unarchive:
+    src: "{{ aws_zip_dest }}"
+    dest: "{{ aws_bin_path}}"
+    remote_src: yes
+
+- name: Install AWS CLI
+  command: "{{ aws_bin_path }}/aws/install"
+
+- name: Ensure .aws directory under user home for awscli config 
+  file:  
+    path: "/home/{{ item.username }}/.aws"
+    state: directory
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+    mode: 0755
+  when: item.get('state', 'present') == 'present'
+  with_items: "{{ awscli_users }}"
+
+- name: Copy awscli config to remote server
+  template:  
+    src: aws_cli_config.j2
+    dest: "/home/{{ item.username }}/.aws/config" 
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+    mode: 0644
+  when: item.get('state', 'present') == 'present'
+  with_items: "{{ awscli_users }}"
