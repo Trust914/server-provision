@@ -3,8 +3,8 @@
 
 - name: Include the vault password file
   include_vars:
-    - awscli_users.yaml
-    - aws_secrets.yaml
+    dir: vars/
+    extensions: [yaml]
 
 - include_tasks: set-up-awscli.yaml
 
