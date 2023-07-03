@@ -13,8 +13,8 @@ resource "aws_key_pair" "deployer" {
 
   provisioner "local-exec" {
     command = <<-EOT
-      echo '${tls_private_key.my_key.private_key_pem}' > '${var.private_key_name}'.pem
-      chmod 400 '${var.private_key_name}'.pem
+      echo '${tls_private_key.my_key.private_key_pem}' > '${var.key_name}'.pem
+      chmod 400 '${var.key_name}'.pem
     EOT
   }
 }
@@ -30,6 +30,7 @@ resource "aws_instance" "dove-inst" {
   tags = {
     Name    = "${each.value}"
     environment = "Development"
+    stack = "kube-stack"
   }
 
 }
