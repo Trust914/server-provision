@@ -36,7 +36,7 @@ resource "aws_instance" "dove-inst" {
 
 
 resource "aws_s3_bucket" "states" {
-  for_each = var.bucket_names
+  for_each = var.bucket_name
   bucket = each.value
   tags = {
     Name = "${each.value}"
@@ -45,9 +45,9 @@ resource "aws_s3_bucket" "states" {
 
 
 resource "aws_s3_object" "object" {
-  for_each = var.bucket_folders
-  bucket   = aws_s3_bucket.tf_state.id
-  key      = "${each.value}/"
+  for_each = aws_s3_bucket.states
+  bucket = each.value.bucket
+  key      = "tf_states/"
 }
 
 data "template_file" "userdata" {
@@ -55,6 +55,6 @@ data "template_file" "userdata" {
 }
 
 output "publicIp" {
-  value = aws_instance.dove-inst.public_ip
-
+  value = { for instance in aws_instance.dove-inst : instance.key => instance.value.public_ip }
 }
+
