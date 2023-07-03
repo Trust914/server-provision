@@ -21,7 +21,6 @@ resource "aws_key_pair" "deployer" {
 resource "aws_instance" "dove-inst" {
   for_each = var.machine-name-tags
   ami                    = var.amis[var.region]
-  count = length(var.machine-name-tags)
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.pub-sub[0].id
   key_name               = aws_key_pair.deployer.key_name
@@ -34,6 +33,7 @@ resource "aws_instance" "dove-inst" {
   }
 
 }
+
 
 resource "aws_s3_bucket" "states" {
   for_each = var.bucket_names
