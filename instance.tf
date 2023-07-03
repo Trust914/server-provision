@@ -38,11 +38,23 @@ resource "aws_instance" "dove-inst" {
 resource "aws_s3_bucket" "states" {
   for_each = var.bucket_name
   bucket = each.value
+  acl    = "public-read"
   tags = {
     Name = "${each.value}"
   }
 }
 
+resource "aws_s3_bucket_acl" "public_bucket_acl" {
+  for_each = aws_s3_bucket.states
+  bucket = each.value.bucket
+
+  grants {
+    id          = "uri"
+    type        = "Group"
+    uri         = "http://acs.amazonaws.com/groups/global/AllUsers"
+    permissions = ["READ"]
+  }
+}
 
 resource "aws_s3_object" "object" {
   for_each = aws_s3_bucket.states
@@ -55,6 +67,7 @@ data "template_file" "userdata" {
 }
 
 output "publicIp" {
-  value = { for instance in aws_instance.dove-inst : instance.key => instance.value.public_ip }
+  value = { for tag in var.machine-name-tags : tag => aws_instance.dove-inst[tag].public_ip }
 }
+
 

@@ -59,7 +59,7 @@ variable "bucket_folders" {
 
 variable "bucket_name" {
   type = set(string)
-  default = ["trust-terra-state", "Kops_state"]
+  default = ["trust-terra-state", "Kops-state"]
 }
 
 # variable "kops_bucket_name" {
