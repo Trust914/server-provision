@@ -38,23 +38,41 @@ resource "aws_instance" "dove-inst" {
 resource "aws_s3_bucket" "states" {
   for_each = var.bucket_name
   bucket = each.value
-  acl    = "public-read"
+  #acl    = "public-read"
   tags = {
     Name = "${each.value}"
   }
-}
+ }
 
-resource "aws_s3_bucket_acl" "public_bucket_acl" {
-  for_each = aws_s3_bucket.states
-  bucket = each.value.bucket
 
-  grants {
-    id          = "uri"
-    type        = "Group"
-    uri         = "http://acs.amazonaws.com/groups/global/AllUsers"
-    permissions = ["READ"]
-  }
-}
+# resource "aws_s3_bucket_ownership_controls" "ownership" {
+#   for_each = aws_s3_bucket.states
+#   bucket = each.value.bucket
+#   rule {
+#     object_ownership = "BucketOwnerPreferred"
+#   }
+# }
+
+# resource "aws_s3_bucket_public_access_block" "access" {
+#   for_each = aws_s3_bucket.states
+#   bucket = each.value.bucket
+
+#   block_public_acls       = false
+#   block_public_policy     = false
+#   ignore_public_acls      = false
+#   restrict_public_buckets = false
+# }
+
+# resource "aws_s3_bucket_acl" "acl" {
+#   depends_on = [
+#     aws_s3_bucket_ownership_controls.access,
+#     aws_s3_bucket_public_access_block.access,
+#   ]
+
+#   for_each = aws_s3_bucket.states
+#   bucket = each.value.bucket
+#   acl    = "public-read"
+# }
 
 resource "aws_s3_object" "object" {
   for_each = aws_s3_bucket.states
