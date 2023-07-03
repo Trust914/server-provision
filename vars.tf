@@ -21,6 +21,7 @@ variable "vpc_priv_subnets" {
 }
 
 variable "machine-name-tags" {
+  type = set(string)
   default = ["jenkins-server","kube-controller"]
 }
 
@@ -57,6 +58,7 @@ variable "bucket_folders" {
 }
 
 variable "bucket_name" {
+  type = set(string)
   default = ["trust-terra-state", "Kops_state"]
 }
 
