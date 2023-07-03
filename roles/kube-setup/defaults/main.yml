@@ -15,3 +15,12 @@ aws_zip_dest: "./awscliv2.zip"
 aws_bin_path: "/tmp"
 aws_config_region: "us-east-2"
 aws_config_format: "json"
+
+domain_name: ""
+s3_bucket_url: "s3://Kops_state/kops_state"
+node_zones: "us-east-1a,us-east-1b"
+number_of_nodes: 2
+node_size: "t3.small"
+master_size: "t3.medium"
+node_volume: 8
+master_volume: 8

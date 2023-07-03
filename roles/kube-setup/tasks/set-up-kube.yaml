@@ -3,7 +3,6 @@
   openssh_keypair:
     path: "{{ ssh_path }}"
   
-
 - name: Get current version of kubectl
   command: curl -L -s "{{ kubectl_base_url }}/stable.txt"
   register: kubectl_version_output
@@ -12,10 +11,7 @@
   set_fact:
     kubectl_version: "{{ kubectl_version_output.stdout }}"
 
-- name: Download AWS CLI zip package
-  get_url:
-    url: "{{ aws_url }}"
-    dest: "{{ aws_zip_dest }}"
+
 
 
 - name: Download kubectl
@@ -45,3 +41,13 @@
     url: "{{ kops_download_url_base }}/{{ kops_version }}/kops-linux-amd64"
     dest: "/usr/local/bin/kops"
     mode: "0755"
+
+- name: Create Kubernetes Cluster
+  shell: |
+    kops create cluster --name="{{ domain_name }}" --state="{{ s3_bucket_url }}" --zones="{{ node_zones }}" \
+    --node-count="{{ number_of_nodes }}" --node-size="{{ node_size }}" --master-size="{{ master_size }}" \
+    --dns-zone="{{ domain_name }}"  --node-volume-size="{{ node_volume }}" --master-volume-size="{{ master_volume }}"
+
+- name: Update cluster
+  shell: |
+    kops update cluster --name="{{ domain_name }}" --state="{{ s3_bucket_url }}" --yes --admin

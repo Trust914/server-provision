@@ -20,9 +20,9 @@
     url: "{{ docker_gpg_repo_url }}/{{ repo_name}}"
     dest: "{{ docker_repo_path }}"
 
-- name: Install Docker Engine
+- name: Install Docker Engine and other packages
   yum:
-    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'docker-buildx-plugin', 'docker-compose-plugin','awscli']
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'docker-buildx-plugin', 'docker-compose-plugin','awscli', 'python3']
     state: present
 
 - name: Start Docker Service

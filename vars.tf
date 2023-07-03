@@ -20,10 +20,15 @@ variable "vpc_priv_subnets" {
   default = ["172.10.5.0/24", "172.10.6.0/24", "172.10.7.0/24"]
 }
 
+variable "machine-name-tags" {
+  default = ["jenkins-server","kube-controller"]
+}
+
 variable "allow-ports" {
   default = {
     "ssh"  = 22,
-    "http" = 80
+    "http" = 80,
+    "tcp" = 8080
   }
 }
 
@@ -37,7 +42,7 @@ variable "amis" {
 }
 
 variable "key_name" {
-  default = "dovkey"
+  default = "kube-key"
 }
 
 
@@ -48,13 +53,17 @@ variable "user" {
 variable "bucket_folders" {
 
   type    = set(string)
-  default = ["tf_states"]
+  default = ["tf_states","kops_state"]
 }
 
 variable "bucket_name" {
-  default = "trust-terra-state"
+  default = ["trust-terra-state", "Kops_state"]
 }
 
+# variable "kops_bucket_name" {
+#   default = "Kops"
+  
+# }
 variable "my-ip" {
   default = "99.252.241.12/32"
 }
