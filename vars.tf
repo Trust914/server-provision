@@ -22,7 +22,7 @@ variable "vpc_priv_subnets" {
 
 variable "machine-name-tags" {
   type = set(string)
-  default = ["jenkins-server","kube-controller"]
+  default = ["jenkinsserver","kubecontroller"]
 }
 
 variable "allow-ports" {

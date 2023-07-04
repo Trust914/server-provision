@@ -3,13 +3,13 @@
 #   public_key = file("dovekey.pub")
 # }
 
-# resource "aws_route53_zone" "dev" {
-#   name = "${var.cluster_domain_name}"
+resource "aws_route53_zone" "dev" {
+  name = "${var.cluster_domain_name}"
 
-#   tags = {
-#     environment = "Development"
-#   }
-# }
+  tags = {
+    environment = "Development"
+  }
+}
 
 resource "tls_private_key" "my_key" {
   algorithm = "RSA"
