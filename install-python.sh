@@ -11,4 +11,4 @@ yum update -y
 # unzip -o 2130_waso_strategy.zip
 # cp -r 2130_waso_strategy/* /var/www/html/
 # systemctl restart httpd
-yum install python3 -y
+yum install -y python3

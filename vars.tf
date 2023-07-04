@@ -36,7 +36,7 @@ variable "allow-ports" {
 variable "amis" {
   type = map(any)
   default = {
-    us-east-1 = "ami-0715c1897453cabd1"
+    us-east-1 = "ami-0a8b4cd432b1c3063"
     us-east-2 = "ami-01107263728f3bef4"
   }
 
