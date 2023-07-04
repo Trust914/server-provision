@@ -67,5 +67,5 @@ variable "bucket_name" {
   
 # }
 variable "my-ip" {
-  default = "99.252.241.12/32"
+  default = "0.0.0.0/0"
 }
