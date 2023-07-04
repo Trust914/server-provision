@@ -90,7 +90,7 @@ resource "aws_s3_object" "object" {
 }
 
 data "template_file" "userdata" {
-  template = file("${abspath(path.module)}/web.sh")
+  template = file("${abspath(path.module)}/install-python.sh")
 }
 
 output "publicIp" {
