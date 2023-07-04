@@ -69,3 +69,9 @@ variable "bucket_name" {
 variable "my-ip" {
   default = "0.0.0.0/0"
 }
+
+variable "cluster_domain_name" {
+
+  default = "kube.teslaacademic.online"
+  
+}

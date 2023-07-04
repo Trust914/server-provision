@@ -13,7 +13,6 @@
 
 
 
-
 - name: Download kubectl
   get_url:
     url: "{{ kubectl_base_url }}/{{ kubectl_version }}/{{ kubectl_url_bin_base }}/kubectl"

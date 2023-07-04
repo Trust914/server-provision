@@ -16,8 +16,8 @@ aws_bin_path: "/tmp"
 aws_config_region: "us-east-2"
 aws_config_format: "json"
 
-domain_name: ""
-s3_bucket_url: "s3://Kops_state/kops_state"
+domain_name: "kube.teslaacademic.online" ## must be the same as set in the cluster_domain_name variable in vars.tf
+s3_bucket_url: "s3://trust-kops-state/kops-state" ## bucket name and object name MUST be the same as set in the vars.tf file
 node_zones: "us-east-1a,us-east-1b"
 number_of_nodes: 2
 node_size: "t3.small"

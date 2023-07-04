@@ -3,6 +3,14 @@
 #   public_key = file("dovekey.pub")
 # }
 
+resource "aws_route53_zone" "dev" {
+  name = "${var.cluster_domain_name}"
+
+  tags = {
+    environment = "Development"
+  }
+}
+
 resource "tls_private_key" "my_key" {
   algorithm = "RSA"
 }
@@ -42,7 +50,7 @@ resource "aws_s3_bucket" "states" {
   tags = {
     Name = "${each.value}"
   }
- }
+}
 
 
 # resource "aws_s3_bucket_ownership_controls" "ownership" {
