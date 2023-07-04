@@ -37,7 +37,7 @@ variable "amis" {
   type = map(any)
   default = {
     us-east-1 = "ami-002070d43b0a4f171"
-    us-east-2 = "ami-01107263728f3bef4"
+    us-east-2 = "ami-05a36e1502605b4aa"
   }
 
 }
@@ -46,10 +46,6 @@ variable "key_name" {
   default = "kube-key"
 }
 
-
-variable "user" {
-  default = "ec2-user"
-}
 
 variable "bucket_folders" {
 
@@ -62,10 +58,7 @@ variable "bucket_name" {
   default = ["trust-kops-state"]
 }
 
-# variable "kops_bucket_name" {
-#   default = "Kops"
-  
-# }
+
 variable "my-ip" {
   default = "0.0.0.0/0"
 }
