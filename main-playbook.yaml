@@ -5,7 +5,7 @@
   hosts: _Development
   become: yes                #If to escalate privilege
   become_method: sudo        #Set become method
-  remote_user: ec2-user          #Update username for remote server
+  remote_user: centos          #Update username for remote server
   roles:
     - docker
   
@@ -14,7 +14,7 @@
   hosts: _jenkins-server
   become: yes
   become_method: sudo
-  remote_user: ec2-user
+  remote_user: centos
   become_user: root
   roles:
     - jenkins-setup
@@ -24,7 +24,7 @@
   hosts: _kube-controller
   become: yes
   become_method: sudo
-  remote_user: ec2-user
+  remote_user: centos
   become_user: root
   roles:
     - kube-setup
