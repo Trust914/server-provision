@@ -42,21 +42,6 @@ resource "aws_instance" "dove-inst" {
 
 }
 
-resource "null_resource" "setupRemoteNodes-2" {
-  count = var.machine-name-tags
-
-  # Ansible requires that the remote system has python already installed in it
-  provisioner "remote-exec" {
-    inline = ["sudo yum install python3 -y"]
-  }
-  connection {
-    type        = "ssh"
-    host        = element(aws_instance.dove-inst.*.public_ip, count.index)
-    private_key = file(var.private_key)
-    user        = var.ansible_user
-  }
-
-}
 
 
 resource "aws_s3_bucket" "states" {

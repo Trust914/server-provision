@@ -75,15 +75,3 @@ variable "cluster_domain_name" {
   default = "kube.teslaacademic.online"
   
 }
-
-variable "ansible_user" {
-  description = "User with which ansible configure"
-  type        = string
-  default     = "ec2-user"
-}
-
-variable "private_key" {
-  description = "User required to login to ec2-instance by ansible"
-  type        = string
-  default     = "kube-key.pem" #"/home/ec2-user/aws_hacluster_terraform/aws_hacluster/Your key"
-}
