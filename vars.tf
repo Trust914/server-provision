@@ -54,12 +54,12 @@ variable "user" {
 variable "bucket_folders" {
 
   type    = set(string)
-  default = ["kopsmachine-state"]
+  default = ["kops-state"]
 }
 
 variable "bucket_name" {
   type = set(string)
-  default = ["trust-Kops-state"]
+  default = ["trust-kops-state"]
 }
 
 # variable "kops_bucket_name" {
