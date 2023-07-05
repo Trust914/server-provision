@@ -1,7 +1,7 @@
 ---
 
 awscli_users:
-  - username: "{{ ansible_user }}"
+  - username: "{{ user }}"
     state: present
     awscli: 
         aws_region: "{{ aws_config_region }}"
