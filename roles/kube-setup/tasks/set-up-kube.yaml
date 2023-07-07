@@ -50,6 +50,7 @@
 - name: Install Helm
   shell: |
     "{{ helm_script_dest }}"
+  ignore_errors: true
 
 - name: Create Kubernetes Cluster
   shell: |
