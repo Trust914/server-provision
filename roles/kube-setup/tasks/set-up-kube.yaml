@@ -49,7 +49,7 @@
 
 - name: Install Helm
   shell: |
-    {{ helm_script_dest }}"
+    "{{ helm_script_dest }}"
 
 - name: Create Kubernetes Cluster
   shell: |
