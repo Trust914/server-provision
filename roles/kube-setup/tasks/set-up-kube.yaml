@@ -41,6 +41,16 @@
     dest: "/usr/local/bin/kops"
     mode: "0755"
 
+- name: Get Helm installation script
+  get_url:
+    url: "{{ helm_get_url }}"
+    dest:	"{{ helm_script_dest }}"
+    mode: "0700"
+
+- name: Install Helm
+  shell: |
+    ./"{{ helm_script_dest }}"
+
 - name: Create Kubernetes Cluster
   shell: |
     kops create cluster --name="{{ domain_name }}" --state="{{ s3_bucket_url }}" --zones="{{ node_zones }}" \

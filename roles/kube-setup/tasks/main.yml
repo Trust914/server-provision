@@ -5,8 +5,6 @@
   include_vars:
     dir: vars/
     extensions: [yaml]
-  vars:
-    user: ansible_user
 
 - include_tasks: set-up-awscli.yaml
 

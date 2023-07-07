@@ -24,3 +24,5 @@ node_size: "t3.small"
 master_size: "t3.medium"
 node_volume: 8
 master_volume: 8
+
+helm_get_url: "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"

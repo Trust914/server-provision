@@ -1,7 +1,7 @@
 ---
 
 awscli_users:
-  - username: "{{ user }}"
+  - username: centos
     state: present
     awscli: 
         aws_region: "{{ aws_config_region }}"
