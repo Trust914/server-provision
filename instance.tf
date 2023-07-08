@@ -40,6 +40,14 @@ resource "aws_instance" "dove-inst" {
     stack = "kube-stack"
   }
 
+  provisioner "local-exec" {
+    command = <<EOT
+      sleep 90;
+
+      ansible-playbook main-playbook.yaml --vault-password-file .vault-passwd;
+    	EOT
+  }
+
 }
 
 
@@ -93,17 +101,17 @@ data "template_file" "userdata" {
   template = file("${abspath(path.module)}/install-python.sh")
 }
 
-resource "null_resource" "setupAnsible" {
-  depends_on = [ aws_instance.dove-inst ]
-  provisioner "local-exec" {
-    command = <<EOT
-      sleep 60;
+# resource "null_resource" "setupAnsible" {
+#   depends_on = [ aws_instance.dove-inst ]
+#   provisioner "local-exec" {
+#     command = <<EOT
+#       sleep 60;
 
-      ansible-playbook main-playbook.yaml --vault-password-file .vault-passwd;
-    	EOT
-  }
+#       ansible-playbook main-playbook.yaml --vault-password-file .vault-passwd;
+#     	EOT
+#   }
 
-}
+# }
 
 output "publicIp" {
   value = { for tag in var.machine-name-tags : tag => aws_instance.dove-inst[tag].public_ip }
