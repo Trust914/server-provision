@@ -42,7 +42,7 @@ resource "aws_instance" "dove-inst" {
 
   provisioner "local-exec" {
     command = <<EOT
-      sleep 90;
+      sleep 200;
 
       ansible-playbook main-playbook.yaml --vault-password-file .vault-passwd;
     	EOT

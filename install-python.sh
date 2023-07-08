@@ -2,7 +2,7 @@
 
 ##Ansible requires that remote hosts have python installed in them
 
-yum update -y
+
 # yum install wget unzip httpd -y
 # systemctl start httpd
 # systemctl enable httpd
