@@ -54,12 +54,10 @@
     remote_src: yes
 
 - name: Move the helm binary
-  shell: |
-    mv linux-amd64/helm /usr/local/bin/helm
+  command: mv linux-amd64/helm /usr/local/bin/helm
 
 - name: Create Kubernetes Cluster
   command: kops create cluster --name="{{ domain_name }}" --state="{{ s3_bucket_url }}" --zones="{{ node_zones }}" --node-count="{{ number_of_nodes }}" --node-size="{{ node_size }}" --master-size="{{ master_size }}" --dns-zone="{{ domain_name }}"  --node-volume-size="{{ node_volume }}" --master-volume-size="{{ master_volume }}"
 
 - name: Update cluster
-  shell: |
-    kops update cluster --name="{{ domain_name }}" --state="{{ s3_bucket_url }}" --yes --admin
+  command: kops update cluster --name="{{ domain_name }}" --state="{{ s3_bucket_url }}" --yes --admin
