@@ -17,7 +17,7 @@ aws_config_region: "us-east-2"
 aws_config_format: "json"
 
 domain_name: "kube.teslaacademic.online" ## must be the same as set in the cluster_domain_name variable in vars.tf
-s3_bucket_url: "s3://trust-kops-state/kops-state" ## bucket name and object name MUST be the same as set in the vars.tf file
+s3_bucket_url: "s3://trust-kops-state/" ## bucket name and object name MUST be the same as set in the vars.tf file
 node_zones: "us-east-1a,us-east-1b"
 number_of_nodes: 2
 node_size: "t3.small"
@@ -25,5 +25,5 @@ master_size: "t3.medium"
 node_volume: 8
 master_volume: 8
 
-helm_get_url: "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
-helm_script_dest: "./get_helm.sh"
+helm_get_url: "https://get.helm.sh/helm-v3.12.1-linux-amd64.tar.gz"
+helm_dest: "./"
