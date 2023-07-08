@@ -41,7 +41,7 @@
     dest: "/usr/local/bin/kops"
     mode: "0755"
 
-- name: Get Helm installation script
+- name: Download helm latest binary zipped file
   get_url:
     url: "{{ helm_get_url }}"
     dest:	"{{ helm_dest }}.tar.gz"
@@ -51,9 +51,7 @@
   unarchive:
     src: "{{ helm_dest }}.tar.gz"
     dest: "{{ helm_dest }}"
-  # shell: |
-  #   tar xzvf "{{ helm_dest }}"
-  # #ignore_errors: true
+    remote_src: yes
 
 - name: Move the helm binary
   shell: |
