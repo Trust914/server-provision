@@ -50,12 +50,12 @@
 - name: Uzip the Helm
   unarchive:
     src: "{{ helm_dest }}.tar.gz"
-    dest: "{{ helm_dest }}"
+    dest: "./"
     remote_src: yes
 
 - name: Move the helm binary
   shell: |
-    mv "{{ helm_dest }}"/helm /usr/local/bin/helm
+    mv linux-amd64/helm /usr/local/bin/helm
 
 - name: Create Kubernetes Cluster
   shell: |
