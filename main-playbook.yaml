@@ -23,8 +23,8 @@
 - name: Set up kops machine
   hosts: _kubecontroller
   become: yes
-  #become_method: sudo
+  become_method: sudo
   remote_user: centos
-  #become_user: root
+  become_user: root
   roles:
     - kube-setup
