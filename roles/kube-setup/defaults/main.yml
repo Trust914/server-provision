@@ -26,4 +26,4 @@ node_volume: 8
 master_volume: 8
 
 helm_get_url: "https://get.helm.sh/helm-v3.12.1-linux-amd64.tar.gz"
-helm_dest: "./"
+helm_dest: "./helm-latest"

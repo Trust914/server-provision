@@ -44,17 +44,20 @@
 - name: Get Helm installation script
   get_url:
     url: "{{ helm_get_url }}"
-    dest:	"{{ helm_dest }}"
+    dest:	"{{ helm_dest }}.tar.gz"
     
 
 - name: Uzip the Helm
-  shell: |
-    tar xzvf "{{ helm_dest }}"
-  #ignore_errors: true
+  unarchive:
+    src: "{{ helm_dest }}.tar.gz"
+    dest: "{{ helm_dest }}"
+  # shell: |
+  #   tar xzvf "{{ helm_dest }}"
+  # #ignore_errors: true
 
 - name: Move the helm binary
   shell: |
-    mv linux-amd64/helm /usr/local/bin/helm
+    mv "{{ helm_dest }}"/helm /usr/local/bin/helm
 
 - name: Create Kubernetes Cluster
   shell: |
