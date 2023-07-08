@@ -97,7 +97,7 @@ resource "null_resource" "setupAnsible" {
   depends_on = [ aws_instance.dove-inst ]
   provisioner "local-exec" {
     command = <<EOT
-      sleep 30;
+      sleep 60;
 
       ansible-playbook main-playbook.yaml --vault-password-file .vault-passwd;
     	EOT
