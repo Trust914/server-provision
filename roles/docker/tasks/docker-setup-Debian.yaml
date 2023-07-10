@@ -43,7 +43,7 @@
 
 - name: Instal Docker and Plugins
   apt:
-    name: ['docker-ce', 'docker-ce-cli', 'docker-buildx-plugin', 'docker-compose-plugin', 'containerd.io','unzip', 'git']
+    name: ['docker-ce', 'docker-ce-cli', 'docker-buildx-plugin', 'docker-compose-plugin', 'containerd.io','unzip', 'git', 'openjdk-8-jdk']
     state: present
   
 - name: Add current user to the docker group

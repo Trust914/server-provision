@@ -68,3 +68,7 @@ variable "cluster_domain_name" {
   default = "kube.teslaacademic.online"
   
 }
+
+variable "default_user" {
+  default ="centos"
+}

@@ -30,11 +30,11 @@
     delay: 5
     timeout: 120
 
-- name: Read admin passkey
-  become_user: root
-  command: cat "{{ jenkins_volume_path }}/secrets/initialAdminPassword"
-  register: jenkins_initial_password
+# - name: Read admin passkey
+#   become_user: root
+#   command: cat "{{ jenkins_volume_path }}/secrets/initialAdminPassword"
+#   register: jenkins_initial_password
 
-- name: Display jenkins initial password contents
-  debug:
-    var: jenkins_initial_password
+# - name: Display jenkins initial password contents
+#   debug:
+#     var: jenkins_initial_password
