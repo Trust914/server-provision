@@ -22,7 +22,7 @@
 
 - name: Install Docker Engine and other packages
   yum:
-    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'docker-buildx-plugin', 'docker-compose-plugin','unzip', 'python3', 'openjdk-8-jdk']
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'docker-buildx-plugin', 'docker-compose-plugin','unzip', 'java-1.8.0-openjdk']
     state: present
 
 - name: Start Docker Service
