@@ -9,8 +9,11 @@
 
 - name: Create docker compose directory
   file:
-    path: "{{ jenkins_volume_path }}/"
+    path: "{{ jenkins_volume_path }}"
     state: directory
+    recurse: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     mode: '0755'
 
 - name: copy Docker Compose files
